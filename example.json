@@ -1,0 +1,9 @@
+{
+    "dataQueries":  [{"name": "TableQnA.Pos", "type": "number, string, boolean, date", "data": [1,32, "Patrick Carpentier","Team Player's",87,"1:48:11.023",1, 22]},{"name": "TableQnA.No", "type": "number, string, boolean, date", "data": [2,1, "Patrick Carpentier", "Team Player's",87,"1:48:11.023",1, 22]},  {"name": "TableQnA.Driver", "type": "number, string, boolean, date", "data": [3,3, "Bruno Junqueira", "Newman/Haas Racing",87,"1:48:11.023",1, 22]}, {"name": "TableQnA.Team", "type": "number, string, boolean, date", "data": [4,9, "Paul Tracy", "Team Player's",87,"1:48:11.023",1, 22]},{"name": "TableQnA.Laps", "type": "number, string, boolean, date", "data": [5,6, "Patrick Carpentier", "Team Player's",87,"1:48:11.023",1, 22]},{"name": "TableQnA.Time/Retired", "type": "number, string, boolean, date", "data": [6,8, "Patrick Carpentier", "Team Player's",87,"1:48:11.023",1, 22]},{"name": "TableQnA.Gird", "type": "number, string, boolean, date", "data": [7,9, "Patrick Carpentier", "Team Player's",87,"1:48:11.023",1, 22]},{"name": "TableQnA.Points", "type": "number, string, boolean, date", "data": [8,4, "Patrick Carpentier", "Team Player's",87,"1:48:11.023",1, 22]}],
+    "questions": ["what were the drivers names?",
+                    "of these, which points did patrick carpentier and bruno junqueira score?",
+                    "who scored higher?"
+                ]
+}
+
+
