@@ -2,11 +2,13 @@ import codecs
 import io
 from pyexpat.errors import codes
 from urllib import request
+
 from flask import Flask, jsonify, render_template,request, redirect
 #from utils import predict
 import csv
 import pandas as pd
 import json
+
 
 app = Flask(__name__)
   
@@ -26,17 +28,36 @@ def validate_file():
         file = json.load(request.files.get('file'))
 
         excel_data = file['dataQueries'] 
-        query = file['questions']
-        if not query:
+        questions = file['questions']
+        if not excel_data:
             raise Exception('No proper data or query found!')
 
         queryString = ''
-        queryString += '|'.join([data['name'].split('.')[1] for data in excel_data]) 
-        for data in excel_data:
+        queryString += '|'.join([data['name'].split('.')[1] for data in excel_data])
+        data_headers = [data['name'].split('.')[1] for data in excel_data]
+
+        row_values = []
+        rows = []
+        count = 0
+        while count < len(excel_data[0]["data"]):
+            for each in excel_data:
+                for index,value in enumerate(each['data']):
+                    if index == count:
+                        row_values.append(value)
+            row_list = {f"row_{count}":row_values}
+            row_values = []
+            rows.append(row_list)
+            count = count + 1
+        
+        for index, data in enumerate(rows):
             queryString += '\n'
-            queryString += '|'.join([str(element) for element in data['data']])
+            queryString += '|'.join([str(element) for element in data[f'row_{index}']])
 
         print(queryString)
+        print(questions)
+
+        #result = predict(queryString,questions)
+
 
         
         
@@ -48,7 +69,7 @@ def validate_file():
         
         return render_template('show_data.html', validated_result=validated_result)
     except Exception as e:
-        
+        print(e)
         validated_result = {'status': 404,
                                     'data': None,
                                     'Error': 'Error with data!'
